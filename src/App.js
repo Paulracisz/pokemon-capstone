@@ -1,18 +1,19 @@
 import React from 'react';
-import logo from './img/pokeball.png'
-import './index.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+import LandingPage from './components/LandingPage';
 
 function App() {
   return (
-    <div className="pokemon">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to the world of Pokémon!!!
-        </p>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <Switch>
+        <Route path="/"><LandingPage /></Route>
+      </Switch>
+    </Router>
+  )
+};
 
 export default App;
