@@ -23,7 +23,7 @@ function LandingPage() {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Enter Password" />
                             </Form.Group>
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" href="/encounter">
                                 Login
                              </Button>
                         </Form>
