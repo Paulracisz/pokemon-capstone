@@ -1,6 +1,32 @@
 @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 
 
+
+
+#pokemenu {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+#backhome {
+  font-size: 20px;
+  margin: 15px;
+}
+
+#checkout {
+  margin: 25px;
+  width: 10em;
+  height: 3em;
+}
+
+.card-img-top {
+  height: 15rem;
+  padding: 10px;
+  object-fit: scale-down;
+}
+
+
 .pokemart-background {
   width: 100%; 
     height: 100%; 
@@ -22,4 +48,16 @@
   text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
     -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
     z-index: 1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.input {
+  margin: 15px;
+}
+
+#button {
+  margin: 10px;
 }
