@@ -1,9 +1,21 @@
-import React from 'react';
-import pokeball from '../../img/pokeball.png'
-import { Form, Button, Card } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react';
+import { useFetchUrl } from '../hooks';
+import pokeball from '../../img/pokeball.png';
+import { Form, Button, Card } from 'react-bootstrap';
 import './LandingPage.css';
 
 function LandingPage() {
+
+    const [pokemonTrainers, setPokemonTrainers] = useState([]);
+    const fetchUrl = useFetchUrl();
+
+    useEffect(() => {
+        const url = 'http://127.0.0.1:8000/api/PokemonTrainer'
+        fetchUrl(url, (data) => setPokemonTrainers(data))
+    }, [])
+
+    console.log({pokemonTrainers})
+
     return (
         <div className="pokemon">
             <header className="Landing-header">
