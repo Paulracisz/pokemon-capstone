@@ -1,20 +1,73 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom'
 import { useFetchUrl } from '../hooks';
 import pokeball from '../../img/pokeball.png';
 import { Form, Button, Card } from 'react-bootstrap';
 import './LandingPage.css';
 
+const emptyLogin = {logged_in: localStorage.getItem('token') !== undefined ? true : false }
 function LandingPage() {
-
-    const [pokemonTrainers, setPokemonTrainers] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(emptyLogin);
+    const [pokemonTrainer, setPokemonTrainer] = useState({username: '', password: ''});
     const fetchUrl = useFetchUrl();
-
+    let {username, password} = pokemonTrainer
+    
     useEffect(() => {
-        const url = 'http://127.0.0.1:8000/api/PokemonTrainer'
-        fetchUrl(url, (data) => setPokemonTrainers(data))
+        if(loggedIn) {
+            const url = 'http://127.0.0.1:8000/current_trainer/'
+            fetch(url, {
+                headers: {
+                    Authorization: `JWT${localStorage.getItem('token')}`
+                }
+            })
+            .then(res => res.json ())
+            .then(json => {
+                console.log({json})
+                setPokemonTrainer({username: json.username})
+            })
+        }
     }, [])
 
-    console.log({pokemonTrainers})
+    console.log({loggedIn})
+    console.log({pokemonTrainer})
+
+    const handle_change = e => {
+        let {name, value} = e.target;
+        console.log(name, value)
+        setPokemonTrainer(prevstate => ({
+            ...prevstate,
+            [name] : value
+        }))
+    }
+
+    const handle_login = (e, username, password) => {
+        e.preventDefault()
+        console.log(typeof(username, password), "this is parse")
+        
+        const url = 'http://127.0.0.1:8000/token-auth/'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.parse(username, password)
+        })
+        // .then(res => console.log({res}))
+        .then(json => {
+            localStorage.setItem('token', json.token);
+            setLoggedIn(true)
+            console.log(json)
+            // setPokemonTrainer(json.user.username)
+        })
+        .catch(error => console.log(error))
+    }
+
+    // useEffect(() => {
+    //     const url = 'http://127.0.0.1:8000/api/PokemonTrainer'
+    //     fetchUrl(url, (data) => setPokemonTrainer(data))
+    // }, [])
+
+    // console.log({pokemonTrainer})
 
     return (
         <div className="pokemon">
@@ -26,16 +79,16 @@ function LandingPage() {
                 <div className="User-forms">
                     <Card style={{ width: '25rem', margin: '10px' }}>
                         <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>Login</Card.Header>
-                        <Form>
+                        <Form onSubmit={(e) => handle_login(e, username, password)}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" placeholder="Enter Username" />
+                                <Form.Control type="text" name="username" value={username} onChange={handle_change} placeholder="Enter Username" />
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Enter Password" />
+                                <Form.Control type="password" name="password" value={password} onChange={handle_change} placeholder="Enter Password" />
                             </Form.Group>
-                            <Button variant="primary" type="submit" href="/encounter">
+                            <Button variant="primary" type="submit">
                                 Login
                              </Button>
                         </Form>
@@ -62,5 +115,7 @@ function LandingPage() {
         </div>
     );
 }
+
+
 
 export default LandingPage;

@@ -8,7 +8,7 @@ function PokedexView() {
     const fetchUrl = useFetchUrl();
 
     useEffect(() => {
-        const url = 'http://127.0.0.1:8000/api/Pokemon'
+        const url = 'http://127.0.0.1:8000/api/Pokemon/'
         fetchUrl(url, (data) => {
             const pokemonNames = data.map(({name}) => {
                 return name
