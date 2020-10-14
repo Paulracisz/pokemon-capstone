@@ -18,3 +18,13 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.card-img-top {
+  background-image: url('../../img/pokemongrassback.png');
+  background-position: center;
+}
+
+.card-header {
+  background-image: url('../../img/pokemongrassback.png');
+  background-position: bottom;
+}
