@@ -1,20 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { useFetchUrl } from '../hooks';
+import React from 'react';
 import pokeball from '../../img/pokeball.png';
 import { Form, Button, Card } from 'react-bootstrap';
 import './LandingPage.css';
+import { useHistory } from 'react-router-dom';
 
-function LandingPage() {
 
-    const [pokemonTrainers, setPokemonTrainers] = useState([]);
-    const fetchUrl = useFetchUrl();
+function LandingPage(props) {
+    const history = useHistory()
+    let {username, password} = props.pokemonTrainer
+    
+    const handle_change = e => {
+        let {name, value} = e.target;
+        props.setPokemonTrainer(prevstate => ({
+            ...prevstate,
+            [name] : value
+        }))
+    }
 
-    useEffect(() => {
-        const url = 'http://127.0.0.1:8000/api/PokemonTrainer'
-        fetchUrl(url, (data) => setPokemonTrainers(data))
-    }, [])
-
-    console.log({pokemonTrainers})
+    const handle_login = (username, password) => {
+        const url = 'http://127.0.0.1:8000/token-auth/'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username, password})
+        })
+        .then(res => res.json ())
+        .then(json => {
+            localStorage.setItem('token', json.token);
+            props.setToken(json.token)
+            props.setPokemonTrainer(prevstate => ({
+                ...prevstate,
+                ...json}))
+            console.log(json)
+        })
+        .catch(error => console.log(error))
+        history.push('/encounter/')
+    }
 
     return (
         <div className="pokemon">
@@ -26,16 +49,16 @@ function LandingPage() {
                 <div className="User-forms">
                     <Card style={{ width: '25rem', margin: '10px' }}>
                         <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>Login</Card.Header>
-                        <Form>
+                        <Form onSubmit={() => handle_login( username, password)}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" placeholder="Enter Username" />
+                                <Form.Control type="text" name="username" value={username} onChange={handle_change} placeholder="Enter Username" />
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Enter Password" />
+                                <Form.Control type="password" name="password" value={password} onChange={handle_change} placeholder="Enter Password" />
                             </Form.Group>
-                            <Button variant="primary" type="submit" href="/encounter">
+                            <Button variant="primary" type="submit">
                                 Login
                              </Button>
                         </Form>
@@ -62,5 +85,7 @@ function LandingPage() {
         </div>
     );
 }
+
+
 
 export default LandingPage;
