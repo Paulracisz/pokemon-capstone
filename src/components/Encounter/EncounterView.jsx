@@ -52,6 +52,8 @@ function EncounterView() {
     
                 {/* <img src={user.pokemon.front_normal_image} alt={user.pokemon.name} />
                 <h3>A wild {user.pokemon.name} has appeared!</h3> */}
+            <EncounterWindow/>
+            <EncounterButtons/>
                 <div>
     
                     <a href='/pokemart' style={{ color: 'yellow' }}>
@@ -70,8 +72,6 @@ function EncounterView() {
                 </div>
             </div>
             <BallBar/>
-            <EncounterWindow/>
-            <EncounterButtons/>
             </React.Fragment>
     )
 };
