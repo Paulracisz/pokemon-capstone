@@ -8,7 +8,7 @@ class EncounterWindow extends Component {
         return (
             <div id = "encounterWindow">
                 <Card style={{ width:'15rem' }}>
-                <Card.Img id="encounterImage" variant="top" alt='a pokemon'/>
+                <Card.Img id="encounterImage" variant="top" alt=''/>
                 <Card.Header 
                 id="encounterName" 
                 style={{ 
