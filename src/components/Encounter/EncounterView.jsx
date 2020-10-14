@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './EncounterView.css';
 import pokemart from '../../img/pokemart.png';
 import pokedex from '../../img/pokedexsmol.png'
+import BallBar from './BallBar'
 
 
 function EncounterView() {
@@ -74,6 +75,7 @@ function EncounterView() {
                 </a>
 
             </div>
+            <BallBar/>
         </div>
 
     )
