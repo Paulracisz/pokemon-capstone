@@ -1,0 +1,30 @@
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+
+body {
+  background: url("../../img/nature_pokemon.jpg") no-repeat center center fixed;
+  background-size: cover;
+  
+}
+
+.encounter-view {
+  text-align: center;
+  font-family: "Pokemon";
+  color: rgb(228, 228, 6);
+  text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
+    -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
+}
+
+#encounterWindow {
+  display: flex;
+  justify-content: center;
+}
+
+.card-img-top {
+  background-image: url('../../img/pokemongrassback.png');
+  background-position: center;
+}
+
+.card-header {
+  background-image: url('../../img/pokemongrassback.png');
+  background-position: bottom;
+}

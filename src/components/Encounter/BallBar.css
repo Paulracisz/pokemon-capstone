@@ -1,0 +1,43 @@
+#ballBox {
+    position : sticky;
+	bottom:0;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.356);
+    padding: 5px;
+}
+
+
+.ballImg {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+
+h2 {
+    justify-self: center;
+    margin: 10px;
+}
+
+
+li {
+    list-style: none;
+}
+
+
+/* styling for scrollbar */
+
+body::-webkit-scrollbar {
+    width: 14px;               /* width of the entire scrollbar */
+  }
+  body::-webkit-scrollbar-track {
+    background:  linear-gradient(0deg, rgba(253, 253, 253, 1) 40%, rgb(253, 0, 0) 60%);
+  }
+  body::-webkit-scrollbar-thumb {
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid black;  /* creates padding around scroll thumb */
+  }
+

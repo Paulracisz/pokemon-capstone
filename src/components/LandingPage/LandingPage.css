@@ -1,0 +1,45 @@
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+
+body {
+  text-align: center;
+}
+.Landing-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Landing-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.Landing-header {
+  background: url('../../img/nature_pokemon.jpg');
+  font-family: "Pokemon";
+  color: rgb(228, 228, 6);
+  text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
+    -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
+  background-size: contain;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.User-forms {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
