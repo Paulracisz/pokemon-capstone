@@ -1,6 +1,6 @@
-import React, { Component, useContext } from 'react';
-import { UserContext } from '../Context/Context'
-import { Form, Button, Card } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Card } from 'react-bootstrap';
+import './EncounterWindow.css'
 
 class EncounterWindow extends Component {
     
@@ -8,7 +8,7 @@ class EncounterWindow extends Component {
         return (
             <div id = "encounterWindow">
                 <Card style={{ width:'15rem' }}>
-                <Card.Img id="encounterImage" variant="top" alt='a pokemon'/>
+                <Card.Img id="encounterImage" variant="top" alt=''/>
                 <Card.Header 
                 id="encounterName" 
                 style={{ 
