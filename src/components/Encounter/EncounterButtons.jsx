@@ -3,8 +3,6 @@ import { UserContext } from "../Context/Context";
 import $ from "jquery";
 import { Button } from "react-bootstrap";
 
-const fetchUrl = "http://127.0.0.1:8000/api/Pokemon";
-
 function EncounterButtons() {
   const imageSpot = document.getElementById("encounterImage");
   
@@ -13,16 +11,18 @@ function EncounterButtons() {
   console.log(imageSpot)
 
   const handleEncounter = (e) => {
-    imageSpot.src = user.pokemon.front_normal_image;
+    const randomPokemon = Math.floor(Math.random() * 151 + 1);
+    const url = "http://127.0.0.1:8000/api/Pokemon/" + randomPokemon
+    fetch(url)
+    .then((res) => res.json())
+    .then((response) => {
+      user.setPokemon(response);
+      imageSpot.src = response.front_normal_image
+      console.log(url)
+      console.log(response)
 
-    fetch(fetchUrl)
-      .then((r) => r.json())
-      .then((data) => {
-        user.setPokemon(
-          data[Math.floor(Math.random() * Object.values(data).length + 1)]
-        );
-        console.log(user.pokemon.name);
-      });
+    });
+    console.log(user.pokemon.name);
 
     $("#encounterButton").hide();
     $("#catchThatPokemonButton").show();
@@ -35,6 +35,9 @@ function EncounterButtons() {
   };
 
   const handleCatchAttempt = (e) => {
+  //  if(){
+
+  //  }
     $("#catchThatPokemonButton").hide();
     $("#encounterButton").show();
 
@@ -125,7 +128,7 @@ function EncounterButtons() {
   return (
     <React.Fragment>
       <div id="encounterButtonSpot">
-        <Button id="encounterButton" onClick={handleEncounter}>
+        <Button id="encounterButton" onClick={() => handleEncounter()}>
           Search for a pokemon!
         </Button>
         <Button
