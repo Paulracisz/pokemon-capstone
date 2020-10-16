@@ -34,8 +34,6 @@ function PokedexView() {
                 console.log(pokemonOwned)
                 const newArr = []
                 for (let i = 0; i < pokemonOwned.length; i++) {
-                    console.log(pokemonOwned[i].owner, 'loop')
-                    console.log(current_trainer, 'trainer')
                     if (pokemonOwned[i].owner === current_trainer) {
                         newArr.push(pokemonOwned[i])
                     }
@@ -46,26 +44,30 @@ function PokedexView() {
     }, [current_trainer])
 
     useEffect(() => {
-        const newArr = []
-        const url = "http://127.0.0.1:8000/api/Pokemon/"
-        for (let i = 0; i < capturedPokemon.length; i++) {
-            fetch(url + capturedPokemon[i].pokemon)
-                .then((res) => res.json())
-                .then((response) => {
-                    newArr.push(response)
-                })
+        async function fetchData() {
+            const newArr = []
+            const url = "http://127.0.0.1:8000/api/Pokemon/"
+            for (let i = 0; i < capturedPokemon.length; i++) {
+                await fetch(url + capturedPokemon[i].pokemon)
+                    .then((res) => res.json())
+                    .then((response) => {
+                        newArr.push(response)
+                    })
+            }
+            setPokemonData(newArr)
         }
-        console.log(newArr, 'fetchy fetch')
-        setPokemonData(newArr)
+        fetchData()
     }, [capturedPokemon])
-
-    console.log(pokemonData, 'pokemon dataatata')
-
 
     return (
         <div className='pokedex-view'>
             <h1>Pokemon Pokédex</h1>
             <a href='/encounter' style={{ color: 'yellow' }}> Back home</a>
+            <ul>
+                {pokemonData.map(({ name }) => (
+                    <li key={name} style={{ textTransform: 'capitalize' }}>{name}</li>
+                ))}
+            </ul>
         </div>
 
     )
