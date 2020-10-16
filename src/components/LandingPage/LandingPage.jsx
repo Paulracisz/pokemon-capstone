@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import pokeball from '../../img/pokeball.png';
 import { Form, Button, Card } from 'react-bootstrap';
 import './LandingPage.css';
-import { useHistory } from 'react-router-dom';
-
+import { useHistory, Link } from 'react-router-dom';
 
 function LandingPage(props) {
     const history = useHistory()
@@ -17,16 +16,10 @@ function LandingPage(props) {
         }))
     }
 
-    const handle_signup_change = e => {
-        let { namesignup, valuesignup } = e.target;
-        props.setPokemonTrainer(prevstate => ({
-            ...prevstate,
-            [namesignup]: valuesignup
-        }))
-    }
 
     const handle_login = (username, password) => {
         const url = 'http://127.0.0.1:8000/token-auth/'
+        // debugger
         fetch(url, {
             method: 'POST',
             headers: {
@@ -48,27 +41,7 @@ function LandingPage(props) {
         history.push('/encounter/')
     }
 
-    const handle_signup = (username, password) => {
-        const url = 'http://127.0.0.1:8000/trainers/'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username, password})
-        })
-            .then(res => res.json())
-            .then(json => {
-                localStorage.setItem('token', json.token)
-                props.setToken(json.token)
-                props.setPokemonTrainer(prevstate => ({
-                    ...prevstate,
-                    ...json
-                }))
-            })
-            .catch(error => console.log(error))
-        history.push('/encounter/')
-    }
+
 
     return (
         <div className="pokemon">
@@ -92,27 +65,12 @@ function LandingPage(props) {
                             <Button variant="primary" type="submit">
                                 Login
                              </Button>
-                        </Form>
-                    </Card>
-                    </div>
-                    <div>
-                    <Card style={{ width: '25rem', margin: '10px' }}>
-                        <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>SignUp</Card.Header>
-                        <Form onSubmit={() => handle_signup(username, password)}>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" namesignup="username" valuesignup={username} onChange={handle_signup_change} placeholder="Enter Username" />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" namesignup="password" valuesignup={password} onChange={handle_signup_change} placeholder="Enter Password" />
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                SignUp
-                             </Button>
+                             <br/>
+                             <Card.Link style={{ color: 'yellow' }} href="/signup/">Not a Trainer? Signup!!!!</Card.Link>
                         </Form>
                     </Card>
                 </div>
+                
             </header>
         </div>
     );
