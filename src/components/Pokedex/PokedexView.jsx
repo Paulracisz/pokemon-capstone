@@ -38,7 +38,6 @@ function PokedexView() {
                         newArr.push(pokemonOwned[i])
                     }
                 }
-                console.log(newArr, 'newarr')
                 setCapturedPokemon(newArr)
             })
     }, [current_trainer])
@@ -63,11 +62,13 @@ function PokedexView() {
         <div className='pokedex-view'>
             <h1>Pokemon Pokédex</h1>
             <a href='/encounter' style={{ color: 'yellow' }}> Back home</a>
-            <ul>
+            <Card style={{ width: '20rem' }}>
+                <Card.Text>
                 {pokemonData.map(({ name }) => (
                     <li key={name} style={{ textTransform: 'capitalize' }}>{name}</li>
                 ))}
-            </ul>
+                </Card.Text>
+            </Card>
         </div>
 
     )
