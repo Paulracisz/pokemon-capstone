@@ -18,8 +18,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/pokedex"><PokedexView /></Route>
-        <Route exact path="/pokemart"><PokeMartView /></Route>
+        <Route exact path="/pokedex"render={() => !token ? <Redirect to="/" /> : <PokedexView />}/>
+        <Route exact path="/pokemart" render={() => !token ? <Redirect to="/" /> : <PokeMartView />}/>
         <Route exact path="/encounter" render={() => !token ? <Redirect to="/" /> : <EncounterView  setToken={setToken} />} />
         <Route exact path="/" render={() => token ? <Redirect to="/encounter" /> : <LandingPage token={token} setToken={setToken} pokemonTrainer={pokemonTrainer} setPokemonTrainer={setPokemonTrainer} />} />
       </Switch>

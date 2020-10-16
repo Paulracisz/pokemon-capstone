@@ -23,6 +23,8 @@ function EncounterView(props) {
       });
   }, []);
 
+  console.log(user.currentTrainer)
+
 //   useEffect(() => {
 //     const randomPokemon = Math.floor(Math.random() * 151 + 1);
 //     const url = "http://127.0.0.1:8000/api/Pokemon/" + randomPokemon;
