@@ -8,7 +8,7 @@ function SignupPage(props) {
     const history = useHistory()
     let { username, password, email_address, personal_website, displayname, bio } = props.signupTrainer
 
-    const handle_signup_change = e => {
+    const handleSignupChange = e => {
         let { name, value } = e.target;
         props.setSignupTrainer(prevstate => ({
             ...prevstate,
@@ -17,7 +17,7 @@ function SignupPage(props) {
         )
     }
 
-    const handle_login = (username, password) => {
+    const handleLogin = (username, password) => {
         const url = 'http://127.0.0.1:8000/token-auth/'
         fetch(url, {
             method: 'POST',
@@ -36,7 +36,7 @@ function SignupPage(props) {
         history.push('/encounter/')
     }
 
-    const handle_signup = (username, password) => {
+    const handleSignup = (username, password) => {
         const url = 'http://127.0.0.1:8000/trainers/'
         fetch(url, {
             method: 'POST',
@@ -48,7 +48,7 @@ function SignupPage(props) {
             .then(res => res.json())
             .then(json => {
                 console.log(json)
-                handle_login(username, password)
+                handleLogin(username, password)
             })
             .catch(error => console.log(error))
         history.push('/encounter/')
@@ -64,30 +64,30 @@ function SignupPage(props) {
                 <div>
                     <Card style={{ width: '25rem', margin: '10px' }}>
                         <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>SignUp</Card.Header>
-                        <Form onSubmit={() => handle_signup(username, password)}>
+                        <Form onSubmit={() => handleSignup(username, password)}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" name="username" value={username} onChange={handle_signup_change} placeholder="Enter Username" />
+                                <Form.Control type="text" name="username" value={username} onChange={handleSignupChange} placeholder="Enter Username" />
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" name="password" value={password} onChange={handle_signup_change} placeholder="Enter Password" />
+                                <Form.Control type="password" name="password" value={password} onChange={handleSignupChange} placeholder="Enter Password" />
                             </Form.Group>
                             <Form.Group controlId="formEmailAddress">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="text" name="emailAddress" value={email_address} onChange={handle_signup_change} placeholder="Optional Enter Email" />
+                                <Form.Control type="text" name="emailAddress" value={email_address} onChange={handleSignupChange} placeholder="Optional Enter Email" />
                             </Form.Group>
                             <Form.Group controlId="formDisplayName">
                                 <Form.Label>Display Name</Form.Label>
-                                <Form.Control type="text" name="displayname" value={displayname} onChange={handle_signup_change} placeholder="Optional Enter Display Name" />
+                                <Form.Control type="text" name="displayname" value={displayname} onChange={handleSignupChange} placeholder="Optional Enter Display Name" />
                             </Form.Group>
                             <Form.Group controlId="formPersonalWebsite">
                                 <Form.Label>Personal Website</Form.Label>
-                                <Form.Control type="text" name="personalWebsite" value={personal_website} onChange={handle_signup_change} placeholder="Optional Enter Personal Website" />
+                                <Form.Control type="text" name="personalWebsite" value={personal_website} onChange={handleSignupChange} placeholder="Optional Enter Personal Website" />
                             </Form.Group>
                             <Form.Group controlId="formBasicBio">
                                 <Form.Label>Bio</Form.Label>
-                                <Form.Control type="text" name="bio" value={bio} onChange={handle_signup_change} placeholder="Optional Enter Bio" />
+                                <Form.Control type="text" name="bio" value={bio} onChange={handleSignupChange} placeholder="Optional Enter Bio" />
                             </Form.Group>
                             <Button variant="primary" type="click">
                                 SignUp
