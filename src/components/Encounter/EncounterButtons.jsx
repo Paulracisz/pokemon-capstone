@@ -30,8 +30,8 @@ function EncounterButtons() {
     const url = 'http://127.0.0.1:8000/api/CaughtPokemon/'
     const trainerId = user.currentTrainer.id
     const pokemonId = user.pokemon.id
-    const currentTime = Date();
-    const utcDate = Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000).toISOString();
+    const currentTime = new Date();
+    const utcDate = new Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000).toISOString();
     fetch(url, {
       method: 'POST',
       headers: {
