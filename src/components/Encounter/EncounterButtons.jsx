@@ -7,7 +7,7 @@ function EncounterButtons() {
   const imageSpot = document.getElementById("encounterImage");
   
   const user = useContext(UserContext);
-
+  // const trainer_name = user.currentTrainer.username
   console.log(imageSpot)
 
   const handleEncounter = (e) => {
@@ -20,8 +20,8 @@ function EncounterButtons() {
       imageSpot.src = response.front_normal_image
       console.log(url)
       console.log(response)
-
-    });
+      console.log(user.currentTrainer.id)
+    }, [user]);
     console.log(user.pokemon.name);
 
     $("#encounterButton").hide();
@@ -34,17 +34,30 @@ function EncounterButtons() {
     user.currentTrainer.currency += 25;
   };
 
-  const handleCatchAttempt = (e) => {
-  //  if(){
+  const pokemonCaught = () => {
+    const trainerId = user.currentTrainer.id
+        const pokemonId = user.pokemon.id
+        const currentTime = new Date();
+        const utcDate = new Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000).toISOString();
+        console.log(trainerId, pokemonId, utcDate)
+        fetch('http://127.0.0.1:8000/api/CaughtPokemon/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({owner: trainerId, pokemon: pokemonId, date_caught: utcDate})
+        })
+  }
 
-  //  }
+  const handleCatchAttempt = (e) => {
+
     $("#catchThatPokemonButton").hide();
     $("#encounterButton").show();
-
     if (user.currentBall === "poke_ball") {
       if (user.currentTrainer.poke_ball < 1) {
         alert("You ran out of poke balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.poke_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
@@ -56,13 +69,13 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
         alert(`You caught ${user.pokemon.name}!`);
       }
     } else if (user.currentBall === "great_ball") {
       if (user.currentTrainer.great_ball < 1) {
         alert("You ran out of great balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.great_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
@@ -83,6 +96,7 @@ function EncounterButtons() {
       if (user.currentTrainer.ultra_ball < 1) {
         alert("You ran out of ultra balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.ultra_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
@@ -103,6 +117,7 @@ function EncounterButtons() {
       if (user.currentTrainer.master_ball < 1) {
         alert("You ran out of master balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.master_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(

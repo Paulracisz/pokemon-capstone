@@ -24,7 +24,7 @@ function SignupPage(props) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username: username, password: password})
+            body: JSON.stringify({ username: username, password: password })
         })
             .then(res => res.json())
             .then(json => {
@@ -43,7 +43,7 @@ function SignupPage(props) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password, email_address, personal_website, displayname, bio})
+            body: JSON.stringify({ username, password, email_address, personal_website, displayname, bio })
         })
             .then(res => res.json())
             .then(json => {
@@ -65,7 +65,6 @@ function SignupPage(props) {
                     <Card style={{ width: '25rem', margin: '10px' }}>
                         <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>SignUp</Card.Header>
                         <Form onSubmit={() => handle_signup(username, password)}>
-                        {/* email_address, personal_website, displayname, bio */}
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="text" name="username" value={username} onChange={handle_signup_change} placeholder="Enter Username" />

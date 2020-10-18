@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import pokeball from '../../img/pokeball.png';
 import { Form, Button, Card } from 'react-bootstrap';
 import './LandingPage.css';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function LandingPage(props) {
     const history = useHistory()
@@ -65,12 +65,11 @@ function LandingPage(props) {
                             <Button variant="primary" type="submit">
                                 Login
                              </Button>
-                             <br/>
-                             <Card.Link style={{ color: 'yellow' }} href="/signup/">Not a Trainer? Signup!!!!</Card.Link>
+                            <br />
+                            <Card.Link style={{ color: 'yellow' }} href="/signup/">Not a Trainer? Signup!!!!</Card.Link>
                         </Form>
                     </Card>
                 </div>
-                
             </header>
         </div>
     );
