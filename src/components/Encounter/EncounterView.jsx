@@ -25,18 +25,6 @@ function EncounterView(props) {
 
   console.log(user.currentTrainer)
 
-//   useEffect(() => {
-//     const randomPokemon = Math.floor(Math.random() * 151 + 1);
-//     const url = "http://127.0.0.1:8000/api/Pokemon/" + randomPokemon;
-//     fetch(url)
-//       .then((res) => res.json())
-//       .then((json) => {
-        
-//         user.setPokemon(json);
-//         document.getElementById("encounterImage").src = json.front_normal_image;
-//       });
-//   }, []);
-
   const handle_logout = () => {
     localStorage.removeItem('token');
     props.setToken('')

@@ -74,7 +74,7 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
+        // user.currentTrainer.pokedexed.push(user.pokemon);
         document.getElementById("moneyz").textContent =
           user.currentTrainer.currency;
         alert(`You caught ${user.pokemon.name}!`);
@@ -94,7 +94,7 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
+        // user.currentTrainer.pokedexed.push(user.pokemon);
         document.getElementById("moneyz").textContent =
           user.currentTrainer.currency;
         alert(`You caught ${user.pokemon.name}!`);
@@ -114,7 +114,7 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
+        // user.currentTrainer.pokedexed.push(user.pokemon);
         document.getElementById("moneyz").textContent =
           user.currentTrainer.currency;
         alert(`You caught ${user.pokemon.name}!`);
@@ -122,7 +122,7 @@ function EncounterButtons() {
     }
 
     document.getElementById("catchThatPokemonButton").disabled = user.disabled;
-    console.log(user.currentTrainer.pokedexed);
+    // console.log(user.currentTrainer.pokedexed);
   };
 
   return (
