@@ -23,17 +23,7 @@ function EncounterView(props) {
       });
   }, []);
 
-//   useEffect(() => {
-//     const randomPokemon = Math.floor(Math.random() * 151 + 1);
-//     const url = "http://127.0.0.1:8000/api/Pokemon/" + randomPokemon;
-//     fetch(url)
-//       .then((res) => res.json())
-//       .then((json) => {
-        
-//         user.setPokemon(json);
-//         document.getElementById("encounterImage").src = json.front_normal_image;
-//       });
-//   }, []);
+  console.log(user.currentTrainer)
 
   const handle_logout = () => {
     localStorage.removeItem('token');
@@ -54,13 +44,13 @@ function EncounterView(props) {
         <EncounterButtons />
         <div id="pokeMartDex">
           <div>
-            <a href="/pokemart" style={{ color: "yellow" }}>
+            <a href="/pokemart" style={{ color: "rgb(255, 204, 1)" }}>
               <img src={pokemart} alt="pokemart" />
               Pokémart
             </a>
           </div>
           <div>
-            <a href="/pokedex" style={{ color: "yellow" }}>
+            <a href="/pokedex" style={{ color: "rgb(255, 204, 1)" }}>
               <img src={pokedex} alt="pokedex" />
               Pokédex
             </a>

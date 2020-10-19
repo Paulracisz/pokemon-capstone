@@ -58,9 +58,7 @@ function PokeMartView() {
                 <img className='stretch' src={pokemartbackground} alt='pokemart background'></img>
             </div>
             <h1>Pokemon PokeMart</h1>
-            <a id="backhome" href='/encounter' style={{color: 'yellow'}}> Back home</a>
-    <h2>Your Balance Is {user.currentTrainer.currency}</h2>
-    <h2>Your Total Cost is {pokeTotal}</h2>
+            <a id="backhome" href='/encounter' style={{color: 'rgb(255, 204, 1)'}}> Back home</a>
             <div id="pokemenu">
                 <Card style={{width:"18rem"}}>
                     <Card.Img className="balls" src={pokeBall} variant='top' alt="a pokeball" />

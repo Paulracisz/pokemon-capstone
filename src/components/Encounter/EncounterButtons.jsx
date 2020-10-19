@@ -5,46 +5,53 @@ import { Button } from "react-bootstrap";
 
 function EncounterButtons() {
   const imageSpot = document.getElementById("encounterImage");
-  
   const user = useContext(UserContext);
-
-  console.log(imageSpot)
-
+  console.log(user.capturedPokemon, 'capturedPokemon')
   const handleEncounter = (e) => {
     const randomPokemon = Math.floor(Math.random() * 151 + 1);
     const url = "http://127.0.0.1:8000/api/Pokemon/" + randomPokemon
     fetch(url)
-    .then((res) => res.json())
-    .then((response) => {
-      user.setPokemon(response);
-      imageSpot.src = response.front_normal_image
-      console.log(url)
-      console.log(response)
-
-    });
-    console.log(user.pokemon.name);
+      .then((res) => res.json())
+      .then((response) => {
+        user.setPokemon(response);
+        imageSpot.src = response.front_normal_image
+      }, [user]);
 
     $("#encounterButton").hide();
     $("#catchThatPokemonButton").show();
-    console.log(user.pokemon.name);
 
     document.getElementById(
       "moneyz"
     ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
     user.currentTrainer.currency += 25;
+    console.log(user.cpturedPokemon, 'Captured!')
   };
 
+  const pokemonCaught = () => {
+    const url = 'http://127.0.0.1:8000/api/CaughtPokemon/'
+    const trainerId = user.currentTrainer.id
+    const pokemonId = user.pokemon.id
+    const currentTime = new Date();
+    const utcDate = new Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000).toISOString();
+    
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ owner: trainerId, pokemon: pokemonId, date_caught: utcDate })
+    })
+  }
+console.log(user.capturedPokemon)
   const handleCatchAttempt = (e) => {
-  //  if(){
 
-  //  }
     $("#catchThatPokemonButton").hide();
     $("#encounterButton").show();
-
     if (user.currentBall === "poke_ball") {
       if (user.currentTrainer.poke_ball < 1) {
         alert("You ran out of poke balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.poke_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
@@ -56,13 +63,13 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
         alert(`You caught ${user.pokemon.name}!`);
       }
     } else if (user.currentBall === "great_ball") {
       if (user.currentTrainer.great_ball < 1) {
         alert("You ran out of great balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.great_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
@@ -74,7 +81,6 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
         document.getElementById("moneyz").textContent =
           user.currentTrainer.currency;
         alert(`You caught ${user.pokemon.name}!`);
@@ -83,6 +89,7 @@ function EncounterButtons() {
       if (user.currentTrainer.ultra_ball < 1) {
         alert("You ran out of ultra balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.ultra_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
@@ -94,7 +101,6 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
         document.getElementById("moneyz").textContent =
           user.currentTrainer.currency;
         alert(`You caught ${user.pokemon.name}!`);
@@ -103,6 +109,7 @@ function EncounterButtons() {
       if (user.currentTrainer.master_ball < 1) {
         alert("You ran out of master balls!");
       } else {
+        pokemonCaught()
         user.currentTrainer.master_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
@@ -114,7 +121,6 @@ function EncounterButtons() {
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        user.currentTrainer.pokedexed.push(user.pokemon);
         document.getElementById("moneyz").textContent =
           user.currentTrainer.currency;
         alert(`You caught ${user.pokemon.name}!`);
@@ -122,8 +128,9 @@ function EncounterButtons() {
     }
 
     document.getElementById("catchThatPokemonButton").disabled = user.disabled;
-    console.log(user.currentTrainer.pokedexed);
   };
+
+  console.log(user.ownedPokemon)
 
   return (
     <React.Fragment>
