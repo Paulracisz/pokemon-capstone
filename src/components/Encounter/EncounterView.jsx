@@ -44,13 +44,13 @@ function EncounterView(props) {
         <EncounterButtons />
         <div id="pokeMartDex">
           <div>
-            <a href="/pokemart" style={{ color: "yellow" }}>
+            <a href="/pokemart" style={{ color: "rgb(255, 204, 1)" }}>
               <img src={pokemart} alt="pokemart" />
               Pokémart
             </a>
           </div>
           <div>
-            <a href="/pokedex" style={{ color: "yellow" }}>
+            <a href="/pokedex" style={{ color: "rgb(255, 204, 1)" }}>
               <img src={pokedex} alt="pokedex" />
               Pokédex
             </a>

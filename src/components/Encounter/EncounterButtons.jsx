@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 function EncounterButtons() {
   const imageSpot = document.getElementById("encounterImage");
   const user = useContext(UserContext);
-
+  console.log(user.capturedPokemon, 'capturedPokemon')
   const handleEncounter = (e) => {
     const randomPokemon = Math.floor(Math.random() * 151 + 1);
     const url = "http://127.0.0.1:8000/api/Pokemon/" + randomPokemon
@@ -24,6 +24,7 @@ function EncounterButtons() {
       "moneyz"
     ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
     user.currentTrainer.currency += 25;
+    console.log(user.cpturedPokemon, 'Captured!')
   };
 
   const pokemonCaught = () => {
@@ -32,6 +33,7 @@ function EncounterButtons() {
     const pokemonId = user.pokemon.id
     const currentTime = new Date();
     const utcDate = new Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000).toISOString();
+    
     fetch(url, {
       method: 'POST',
       headers: {
@@ -40,7 +42,7 @@ function EncounterButtons() {
       body: JSON.stringify({ owner: trainerId, pokemon: pokemonId, date_caught: utcDate })
     })
   }
-
+console.log(user.capturedPokemon)
   const handleCatchAttempt = (e) => {
 
     $("#catchThatPokemonButton").hide();
@@ -127,6 +129,8 @@ function EncounterButtons() {
 
     document.getElementById("catchThatPokemonButton").disabled = user.disabled;
   };
+
+  console.log(user.ownedPokemon)
 
   return (
     <React.Fragment>

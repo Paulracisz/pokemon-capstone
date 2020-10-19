@@ -13,6 +13,10 @@ export const UserProvider = ({ children }) => {
   const [disabled, setDisabled] = useState(true)
   const [currentLevel, setCurrentLevel] = useState(0)
   const [ownedPokemon, setOwnedPokemon] = useState([])
+  const [capturedPokemon, setCapturedPokemon] = useState([])
+    const [pokemonData, setPokemonData] = useState([])
+    const [show, setShow] = useState(false)
+    const [pokedexModal, setPokedexModal] = useState({})
 
 
   return (
@@ -37,7 +41,15 @@ export const UserProvider = ({ children }) => {
         currentLevel,
         setCurrentLevel,
         ownedPokemon,
-        setOwnedPokemon
+        setOwnedPokemon,
+        capturedPokemon,
+        setCapturedPokemon,
+        pokemonData,
+        setPokemonData,
+        show,
+        setShow,
+        pokedexModal,
+        setPokedexModal
       }}
     >
       {children}

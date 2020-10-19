@@ -9,7 +9,7 @@ body {
 .encounter-view {
   text-align: center;
   font-family: "Pokemon";
-  color: rgb(228, 228, 6);
+  color: rgb(255, 204, 1);
   text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
     -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
 }
