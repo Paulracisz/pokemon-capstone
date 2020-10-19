@@ -42,6 +42,19 @@ function EncounterButtons() {
       body: JSON.stringify({ owner: trainerId, pokemon: pokemonId, date_caught: utcDate })
     })
   }
+
+ const updateTrainer = () => {
+  const url = 'http://127.0.0.1:8000/api/PokemonTrainer/'
+  const trainerId = user.currentTrainer.id
+  fetch(url + trainerId + '/', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({poke_ball: 15})
+  })
+ }
+
 console.log(user.capturedPokemon)
   const handleCatchAttempt = (e) => {
 
@@ -52,6 +65,7 @@ console.log(user.capturedPokemon)
         alert("You ran out of poke balls!");
       } else {
         pokemonCaught()
+        updateTrainer()
         user.currentTrainer.poke_ball -= 1;
         user.currentTrainer.exp += 10;
         document.getElementById(
