@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import React, { useContext } from 'react';
-import { UserContext } from '../Context/Context';
-import './PokedexView.css';
-
-
-=======
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../Context/Context";
 import { Card, Modal, Button } from "react-bootstrap";
@@ -30,7 +23,6 @@ function PokedexView() {
         user.setCurrentTrainer(response);
       });
   }, []);
->>>>>>> 4d87daa5a84e2ee70dbd323f60ffa4a57dcc0518
 
   useEffect(() => {
     const url = "http://127.0.0.1:8000/api/CaughtPokemon/";
@@ -41,19 +33,6 @@ function PokedexView() {
           return { owner, pokemon, date_caught };
         });
 
-<<<<<<< HEAD
-function PokedexView() {
-    const user = useContext(UserContext)
-    // console.log(user.currentTrainer.pokedexed[1])
-    return (
-        <div className='pokedex-view'>
-            <h1>Pokemon Pokédex</h1>
-            <a href='/encounter' style={{color: 'yellow'}}> Back home</a>
-            <ul>
-                <li></li>
-            </ul>
-        </div>
-=======
         const newArr = [];
         for (let i = 0; i < pokemonOwned.length; i++) {
           if (pokemonOwned[i].owner === current_trainer) {
@@ -79,7 +58,6 @@ function PokedexView() {
     }
     fetchData();
   }, [user.capturedPokemon]);
->>>>>>> 4d87daa5a84e2ee70dbd323f60ffa4a57dcc0518
 
   const handlePokedexData = (name) => {
     for (let i = 0; i < user.pokemonData.length; i++) {
