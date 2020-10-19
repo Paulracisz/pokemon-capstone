@@ -43,3 +43,8 @@
   text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
     -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
 }
+
+#trainerInfo {
+  position: absolute;
+  font-size: 30px;
+}

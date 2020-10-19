@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import pokeball from '../../img/pokeball.png';
 import { Form, Button, Card } from 'react-bootstrap';
 import './LandingPage.css';
@@ -19,7 +19,6 @@ function LandingPage(props) {
 
     const handleLogin = (username, password) => {
         const url = 'http://127.0.0.1:8000/token-auth/'
-        // debugger
         fetch(url, {
             method: 'POST',
             headers: {

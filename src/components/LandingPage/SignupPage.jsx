@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import pokeball from '../../img/pokeball.png';
 import { Form, Button, Card } from 'react-bootstrap';
 import './LandingPage.css';
@@ -92,6 +92,8 @@ function SignupPage(props) {
                             <Button variant="primary" type="click">
                                 SignUp
                              </Button>
+                             <br/>
+                             <Card.Link style={{ color: 'rgb(255, 204, 1)' }} href="/">Already have an account? Go back to Login</Card.Link>
                         </Form>
                     </Card>
                 </div>

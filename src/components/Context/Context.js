@@ -14,9 +14,10 @@ export const UserProvider = ({ children }) => {
   const [currentLevel, setCurrentLevel] = useState(0)
   const [ownedPokemon, setOwnedPokemon] = useState([])
   const [capturedPokemon, setCapturedPokemon] = useState([])
-    const [pokemonData, setPokemonData] = useState([])
-    const [show, setShow] = useState(false)
-    const [pokedexModal, setPokedexModal] = useState({})
+  const [pokemonData, setPokemonData] = useState([])
+  const [show, setShow] = useState(false)
+  const [pokedexModal, setPokedexModal] = useState({})
+  const [pokemonText, setPokemonText] = useState()
 
   useEffect(() => {
     const url = "http://127.0.0.1:8000/current_trainer";
@@ -60,7 +61,9 @@ export const UserProvider = ({ children }) => {
         show,
         setShow,
         pokedexModal,
-        setPokedexModal
+        setPokedexModal,
+        pokemonText,
+        setPokemonText
       }}
     >
       {children}

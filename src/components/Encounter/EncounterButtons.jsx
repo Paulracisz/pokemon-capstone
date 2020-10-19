@@ -17,6 +17,7 @@ function EncounterButtons() {
       .then((response) => {
         user.setPokemon(response);
         imageSpot.src = response.front_normal_image
+        user.setPokemonText(response.name)
       }, [user]);
 
     $("#encounterButton").hide();
@@ -160,6 +161,9 @@ console.log(user.capturedPokemon)
 
   return (
     <React.Fragment>
+      <Alert id="alertWindow" style={{ color: "rgb(255, 204, 1)", width: '28rem'}} show={show} variant="light" onClose={() => setShow(false)} dismissible>
+        <Alert.Heading>You Caught The Pokémon!!</Alert.Heading>
+      </Alert>
       <div id="encounterButtonSpot">
         <Button id="encounterButton" onClick={() => handleEncounter()}>
           Search for a pokemon!
@@ -172,11 +176,6 @@ console.log(user.capturedPokemon)
           Catch It!!!!
         </Button>
       </div>
-    
-      <Alert style={{ color: "rgb(255, 204, 1)", textTransform: "capitalize", width: '28rem'}} show={show} variant="light" onClose={() => setShow(false)} dismissible>
-        <Alert.Heading>you caught the pokémon!!</Alert.Heading>
-      {user.pokemon.name}
-      </Alert>
     </React.Fragment>
   );
 }
