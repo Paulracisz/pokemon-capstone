@@ -44,6 +44,9 @@ function PokeMartView() {
         } else {
             let finalTotal = user.currentTrainer.currency - pokeTotal
             let pokeBallTotal = user.currentTrainer.poke_ball + poke_ball.pokeball
+            let greatBallTotal = user.currentTrainer.great_ball + poke_ball.greatball
+            let ultraBallTotal = user.currentTrainer.ultra_ball + poke_ball.ultraball
+            let masterBallTotal = user.currentTrainer.master_ball + poke_ball.masterball
             // setting the id of the current user so we can use it in reference to our endpoint
             let currentTrainer = user.currentTrainer.id
             fetch(url + currentTrainer + "/", {
@@ -52,7 +55,7 @@ function PokeMartView() {
                     'Content-Type': 'application/json'
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: JSON.stringify({ currency: finalTotal, poke_ball: pokeBallTotal })
+                body: JSON.stringify({ currency: finalTotal, poke_ball: pokeBallTotal, great_ball: greatBallTotal, ultra_ball: ultraBallTotal, master_ball: masterBallTotal})
             })
             setShow(true)
         }
