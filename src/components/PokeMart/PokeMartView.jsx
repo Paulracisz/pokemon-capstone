@@ -36,7 +36,7 @@ function PokeMartView() {
     console.log(poke_ball)
     const handleSubmit = (e, value) => {
         if (pokeTotal > user.currentTrainer.currency) {
-            window.alert("You do not have enough money, broke hoe.")
+            window.alert("You do not have enough money.")
         } else {
             let finalTotal = pokeTotal - user.currentTrainer.currency
             fetch(url, {

@@ -39,7 +39,6 @@ function EncounterView(props) {
         <h3 id = 'xpz'>Exp Points: {user.currentTrainer.exp}</h3>
         <h3 id = "level">Lvl: {user.currentTrainer.level}</h3>
         <h3 id="moneyz">Moneyz $ {user.currentTrainer.currency}</h3>
-        <button className="btn btn-danger" onClick={handle_logout} >Logout</button>
         <EncounterWindow />
         <EncounterButtons />
         <div id="pokeMartDex">
@@ -55,6 +54,7 @@ function EncounterView(props) {
               Pokédex
             </a>
           </div>
+        <button style={{ marginTop: "10px" }}className="btn btn-danger" onClick={handle_logout} >Logout</button>
         </div>
       </div>
       <BallBar />

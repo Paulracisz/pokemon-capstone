@@ -66,7 +66,7 @@ function LandingPage(props) {
                                 Login
                              </Button>
                             <br />
-                            <Card.Link style={{ color: 'yellow' }} href="/signup/">Not a Trainer? Signup!!!!</Card.Link>
+                            <Card.Link style={{ color: 'rgb(255, 204, 1)' }} href="/signup/">Not a Trainer? Signup!!!!</Card.Link>
                         </Form>
                     </Card>
                 </div>

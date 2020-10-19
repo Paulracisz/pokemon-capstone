@@ -108,7 +108,7 @@ function PokedexView() {
         </Card>
       </div>
 
-      <Modal show={user.show} onHide={handleClose}>
+      <Modal className='pokedexModal' show={user.show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Gotta Catch 'em all!</Modal.Title>
         </Modal.Header>
