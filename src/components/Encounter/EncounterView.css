@@ -3,7 +3,6 @@
 body {
   background: url("../../img/nature_pokemon.jpg") no-repeat center center fixed;
   background-size: cover;
-  
 }
 
 .encounter-view {
@@ -13,6 +12,7 @@ body {
   text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
     -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
 }
+
 
 #encounterWindow {
   display: flex;

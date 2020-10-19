@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const UserContext = createContext();
 
@@ -13,7 +13,18 @@ export const UserProvider = ({ children }) => {
   const [disabled, setDisabled] = useState(true)
   const [currentLevel, setCurrentLevel] = useState(0)
 
-
+  useEffect(() => {
+    const url = "http://127.0.0.1:8000/current_trainer";
+    fetch(url, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        setCurrentTrainer(json);
+      });
+  }, []);
   return (
     <UserContext.Provider
       value={{
