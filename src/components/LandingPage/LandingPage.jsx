@@ -51,8 +51,8 @@ function LandingPage(props) {
                 </p>
                 <div className="User-forms">
                     <Card style={{ width: '25rem', margin: '10px' }}>
-                        <Card.Header style={{ fontSize: '30px', textAlign: 'center' }}>Login</Card.Header>
-                        <Form onSubmit={() => handleLogin(username, password)}>
+                        <Card.Header className="formCard" style={{ fontSize: '30px', textAlign: 'center' }}>Login</Card.Header>
+                        <Form className="formCard" onSubmit={() => handleLogin(username, password)}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="text" name="username" value={username} onChange={handleChange} placeholder="Enter Username" />

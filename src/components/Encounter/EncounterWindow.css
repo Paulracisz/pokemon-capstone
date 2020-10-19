@@ -2,3 +2,7 @@
 Card.Image {
     display: none;
 }
+
+#encounterImage {
+    background-image: url("../../img/pokemongrassback.png");
+}

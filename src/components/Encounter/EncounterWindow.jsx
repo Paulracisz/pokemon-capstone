@@ -10,7 +10,7 @@ function EncounterWindow() {
 
     return (
         <div id="encounterWindow">
-            <Card style={{ width: '15rem' }}>
+            <Card style={{ width: '15rem' }} id="encounterCard">
                 <Card.Img id="encounterImage" variant="top" alt='' />
                 <Card.Header id="encounterName"
                     style={{
