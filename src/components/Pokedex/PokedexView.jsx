@@ -76,7 +76,6 @@ function PokedexView() {
             }
         }
     };
-    console.log(user.pokedexModal);
 
     return (
         <div className="pokedex-view">
@@ -87,13 +86,13 @@ function PokedexView() {
             <div id="trainerInfo">
                 <h1>Trainer Info:</h1>
                 <ul style={{ textAlign: 'left' }}>
-                    <li><img style={{width: '30px'}}src={pokeball}/> Trainer: {user.currentTrainer.username}</li>
-                    <li><img style={{width: '30px'}}src={pokeball}/> Email: {user.currentTrainer.email_address}</li>
-                    <li><img style={{width: '30px'}}src={pokeball}/> Personal Website: {user.currentTrainer.personal_website}</li>
-                    <li><img style={{width: '30px'}}src={pokeball}/> Bio: {user.currentTrainer.bio}</li>
-                    <li><img style={{width: '30px'}}src={pokeball}/> Lvl: {user.currentTrainer.level}</li>
-                    <li><img style={{width: '30px'}}src={pokeball}/> Exp: {user.currentTrainer.exp}</li>
-                    <li><img style={{width: '30px'}}src={pokeball}/> Moneyz: {user.currentTrainer.currency}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Trainer: {user.currentTrainer.username}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Email: {user.currentTrainer.email_address}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Personal Website: {user.currentTrainer.personal_website}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Bio: {user.currentTrainer.bio}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Lvl: {user.currentTrainer.level}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Exp: {user.currentTrainer.exp}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Moneyz: {user.currentTrainer.currency}</li>
                 </ul>
             </div>
             <div id="cardImageHolder">
@@ -115,7 +114,7 @@ function PokedexView() {
                                     handleShow();
                                 }}
                             >
-                                <img style={{width: '18px'}}src={pokeball}/> {name}
+                                <img style={{width: '18px'}}src={pokeball} alt="pokeball"/> {name}
                             </li>
                         ))}
                     </Card.Text>
@@ -123,33 +122,33 @@ function PokedexView() {
             </div>
 
             <Modal className='pokedexModal' show={user.show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Gotta Catch 'em all!</Modal.Title>
+                <Modal.Header>
+                    <Modal.Title style={{ margin: '0 auto'}}>  Gotta Catch 'em all!</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ fontSize: '22px',textTransform: 'capitalize', backgroundImage: 'linear-gradient(red, white)' }} >
                     <div>
                         <span>
-                            Name: {user.pokedexModal.name}
+                            name: {user.pokedexModal.name}
                             <br />
                         </span>
                         <span>
                             <img alt={user.pokedexModal.name} src={user.pokedexModal.image} />
                             <br />
                         </span>
-            Abilities -<br />
+            abilities: <br />
                         <span>
-                            Ability One: {user.pokedexModal.ability_One}
+                            ability one: {user.pokedexModal.ability_One}
                             <br />
-              Ability Two: {user.pokedexModal.ability_Two}
+              ability two: {user.pokedexModal.ability_Two}
                             <br />
-              Ability Three: {user.pokedexModal.ability_Three}
+              ability three: {user.pokedexModal.ability_Three}
                             <br />
                         </span>
-            Types -<br />
+            types: <br />
                         <span>
-                            Type One: {user.pokedexModal.type_One}
+                            type one: {user.pokedexModal.type_One}
                             <br />
-              Type Two: {user.pokedexModal.type_Two}
+              type two: {user.pokedexModal.type_Two}
                         </span>
                     </div>
                 </Modal.Body>

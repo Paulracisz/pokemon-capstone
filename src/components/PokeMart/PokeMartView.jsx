@@ -36,8 +36,6 @@ function PokeMartView() {
         }
     }
 
-    console.log(poke_ball)
-    console.log(user.currentTrainer.id)
     const handleSubmit = (e, value) => {
         if (pokeTotal > user.currentTrainer.currency) {
             window.alert("You do not have enough money.")
@@ -53,7 +51,6 @@ function PokeMartView() {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: JSON.stringify({ currency: finalTotal, poke_ball: pokeBallTotal, great_ball: greatBallTotal, ultra_ball: ultraBallTotal, master_ball: masterBallTotal})
             })
@@ -64,15 +61,16 @@ function PokeMartView() {
     console.log(pokeTotal)
     return (
         <div className='pokemart-view'>
+            <div id = "moneyzDisplay">Moneyz: {user.currentTrainer.currency} </div>
             <div className='pokemart-background'>
                 <img className='stretch' src={pokemartbackground} alt='pokemart background'></img>
             </div>
             <h1>Pokemon PokeMart</h1>
             <a id="backhome" href='/encounter' style={{ color: 'rgb(255, 204, 1)' }}> Back home</a>
             <div id="pokemenu">
-                <Alert id="alertWindow" style={{ color: "rgb(255, 204, 1)", width: '18rem', position:'absolute', zIndex: '3', opacity:'90%', height: '18rem' }} show={show} variant="light" onClose={() => setShow(false)} dismissible>
+                <Alert id="purchaseWindow" show={show} variant="light" onClose={() => setShow(false)} dismissible>
                     <Alert.Heading>"Thank you for your purrrrrrchase! Come again Swooon!"
-                        <img src={Meowth} style={{width: "160px", margin: "10px"}}/>
+                        <img src={Meowth} style={{width: "160px", margin: "10px"}} alt="meowth"/>
                     </Alert.Heading>
                 </Alert>
                 <Card style={{ width: "18rem" }}>
