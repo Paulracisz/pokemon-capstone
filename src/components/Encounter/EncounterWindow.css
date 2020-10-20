@@ -6,3 +6,9 @@ Card.Image {
 #encounterImage {
     background-image: url("../../img/pokemongrassback.png");
 }
+
+#alertWindow {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
