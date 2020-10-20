@@ -59,7 +59,7 @@ function EncounterView(props) {
               Pokémart
             </a>
           </div>
-          <div>
+          <div style={{ marginTop: "20px" }}>
             <a href="/pokedex" style={{ color: "rgb(255, 204, 1)" }}>
               <img src={pokedex} alt="pokedex" />
               Pokédex

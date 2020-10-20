@@ -1,10 +1,16 @@
 @import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 
-
 #pokemenu {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+#moneyzDisplay {
+  position: absolute;
+  left: 2%;
+  top: 2%;
+  font-size: 30px;
 }
 
 #backhome {
@@ -29,14 +35,13 @@
   background-image: linear-gradient(red, white);
 }
 
-
 .pokemart-background {
-  width: 100%; 
-    height: 100%; 
-    position: fixed; 
-    left: 0px; 
-    top: 0px; 
-    z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
 }
 
 .stretch {
@@ -50,7 +55,7 @@
   color: rgb(255, 204, 1);
   text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
     -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
-    z-index: 1;
+  z-index: 1;
 }
 
 ul {
@@ -63,4 +68,15 @@ ul {
 
 #button {
   margin: 10px;
+}
+
+#purchaseWindow {
+
+  color: rgb(255, 204, 1);
+  width: 22rem;
+  height: 18rem;
+  position: absolute;
+  z-index: 3;
+  
+  background-image: linear-gradient(white, red);
 }
