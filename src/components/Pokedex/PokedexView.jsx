@@ -7,10 +7,8 @@ import pokeball from '../../img/pokeball.png'
 
 function PokedexView() {
     const user = useContext(UserContext);
-
     const handleClose = () => user.setShow(false);
     const handleShow = () => user.setShow(true);
-    const current_trainer = user.currentTrainer.id;
 
     useEffect(() => {
         const url = "http://127.0.0.1:8000/current_trainer";
@@ -23,26 +21,22 @@ function PokedexView() {
             .then((response) => {
                 user.setCurrentTrainer(response);
             });
-    }, []);
+    }, [user]);
+
 
     useEffect(() => {
-        const url = "http://127.0.0.1:8000/api/CaughtPokemon/";
-        fetch(url)
-            .then((res) => res.json())
-            .then((response) => {
-                const pokemonOwned = response.map(({ owner, pokemon, date_caught }) => {
-                    return { owner, pokemon, date_caught };
-                });
+        const url = "http://127.0.0.1:8000/api/CaughtPokemon";
+        fetch(url, {
+            headers: {
+                Authorization: `JWT ${localStorage.getItem("token")}`
+            }
+        })
+        .then((res) => res.json())
+        .then((response) => {
+            user.setCapturedPokemon(response)
+        })
+    }, [user])
 
-                const newArr = [];
-                for (let i = 0; i < pokemonOwned.length; i++) {
-                    if (pokemonOwned[i].owner === current_trainer) {
-                        newArr.push(pokemonOwned[i]);
-                    }
-                }
-                user.setCapturedPokemon(newArr);
-            });
-    }, [current_trainer]);
 
     useEffect(() => {
         async function fetchData() {
@@ -58,7 +52,8 @@ function PokedexView() {
             user.setPokemonData(newArr);
         }
         fetchData();
-    }, [user.capturedPokemon]);
+    }, [user]);
+
 
     const handlePokedexData = (name) => {
         for (let i = 0; i < user.pokemonData.length; i++) {
