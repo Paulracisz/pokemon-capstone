@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Card } from 'react-bootstrap';
-import { UserContext } from '../Context/Context'
-import './EncounterWindow.css'
+import { UserContext } from '../Context/Context';
+import './EncounterWindow.css';
 
 function EncounterWindow() {
 
-    const user = useContext(UserContext)
+    const user = useContext(UserContext);
 
 
     return (

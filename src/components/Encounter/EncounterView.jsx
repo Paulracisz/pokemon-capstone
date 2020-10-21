@@ -11,7 +11,7 @@ import { Alert } from 'react-bootstrap';
 function EncounterView(props) {
   const user = useContext(UserContext);
 
-  const [errMsg, setErrMsg] = useState('')
+  const [errMsg, setErrMsg] = useState('');
   const [show, setShow] = useState(false);
   useEffect(() => {
     const url = "http://127.0.0.1:8000/current_trainer";
@@ -20,20 +20,19 @@ function EncounterView(props) {
         Authorization: `JWT ${localStorage.getItem("token")}`,
       },
     })
-    .then((res) => {
-        user.setCurrentTrainer(res.json())
+      .then((res) => {
+        user.setCurrentTrainer(res.json());
       })
       .catch((err) => {
-        setErrMsg(err.message)
-        setShow(true)
+        setErrMsg(err.message);
+        setShow(true);
       })
   }, []);
 
-  console.log(user.currentTrainer)
 
   const handle_logout = () => {
     localStorage.removeItem('token');
-    props.setToken('')
+    props.setToken('');
   }
 
 
@@ -45,11 +44,11 @@ function EncounterView(props) {
         <h3 id='xpz'>Exp Points: {user.currentTrainer.exp}</h3>
         <h3 id="level">Lvl: {user.currentTrainer.level}</h3>
         <h3 id="moneyz">Moneyz $ {user.currentTrainer.currency}</h3>
-        <Alert id="alertWindow" style={{ color: "rgb(255, 204, 1)", width: '18rem', zIndex: '3', opacity:'90%'}} show={show} variant="light" onClose={() => setShow(false)} dismissible>
-                    <Alert.Heading>
-                    {errMsg ? errMsg :""}
-                    </Alert.Heading>
-                    </Alert>
+        <Alert id="alertWindow" style={{ color: "rgb(255, 204, 1)", width: '18rem', zIndex: '3', opacity: '90%' }} show={show} variant="light" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>
+            {errMsg ? errMsg : ""}
+          </Alert.Heading>
+        </Alert>
         <EncounterWindow />
         <EncounterButtons />
         <div id="pokeMartDex">

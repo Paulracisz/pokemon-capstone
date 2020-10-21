@@ -16,8 +16,8 @@ function EncounterButtons() {
       .then((res) => res.json())
       .then((response) => {
         user.setPokemon(response);
-        imageSpot.src = response.front_normal_image
-        user.setPokemonText(response.name)
+        imageSpot.src = response.front_normal_image;
+        user.setPokemonText(response.name);
       }, [user]);
 
     $("#encounterButton").hide();
@@ -26,16 +26,15 @@ function EncounterButtons() {
     document.getElementById(
       "moneyz"
     ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-    console.log(user.cpturedPokemon, 'Captured!')
   };
 
   const pokemonCaught = () => {
-    const url = 'http://127.0.0.1:8000/api/CaughtPokemon/'
-    const trainerId = user.currentTrainer.id
-    const pokemonId = user.pokemon.id
+    const url = 'http://127.0.0.1:8000/api/CaughtPokemon/';
+    const trainerId = user.currentTrainer.id;
+    const pokemonId = user.pokemon.id;
     const currentTime = new Date();
     const utcDate = new Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000).toISOString();
-    
+
     fetch(url, {
       method: 'POST',
       headers: {
@@ -45,8 +44,7 @@ function EncounterButtons() {
     })
   }
 
-  
-console.log(user.capturedPokemon)
+
   const handleCatchAttempt = (e) => {
 
     $("#catchThatPokemonButton").hide();
@@ -55,20 +53,20 @@ console.log(user.capturedPokemon)
       if (user.currentTrainer.poke_ball < 1) {
         alert("You ran out of poke balls!");
       } else {
-        pokemonCaught()
+        pokemonCaught();
         const trainerPokeBall = user.currentTrainer.poke_ball -= 1;
         const trainerExp = user.currentTrainer.exp += 10;
-        const trainerCurrency = user.currentTrainer.currency += 100
-          const url = 'http://127.0.0.1:8000/api/PokemonTrainer/'
-          const trainerId = user.currentTrainer.id
-          fetch(url + trainerId + '/', {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({poke_ball: trainerPokeBall, exp: trainerExp, currency: trainerCurrency})
-          })
-         
+        const trainerCurrency = user.currentTrainer.currency += 100;
+        const url = 'http://127.0.0.1:8000/api/PokemonTrainer/';
+        const trainerId = user.currentTrainer.id;
+        fetch(url + trainerId + '/', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ poke_ball: trainerPokeBall, exp: trainerExp, currency: trainerCurrency })
+        })
+
         document.getElementById(
           "xpz"
         ).textContent = `Exp Points: ${user.currentTrainer.exp}`;
@@ -78,25 +76,25 @@ console.log(user.capturedPokemon)
         document.getElementById(
           "moneyz"
         ).textContent = `Moneyz $ ${user.currentTrainer.currency}`;
-        setShow(true)
+        setShow(true);
       }
     } else if (user.currentBall === "great_ball") {
       if (user.currentTrainer.great_ball < 1) {
         alert("You ran out of great balls!");
       } else {
-        pokemonCaught()
+        pokemonCaught();
         const trainerGreatBall = user.currentTrainer.great_ball -= 1;
         const trainerExp = user.currentTrainer.exp += 10;
-        const trainerCurrency = user.currentTrainer.currency += 100
-          const url = 'http://127.0.0.1:8000/api/PokemonTrainer/'
-          const trainerId = user.currentTrainer.id
-          fetch(url + trainerId + '/', {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({great_ball: trainerGreatBall, exp: trainerExp, currency: trainerCurrency})
-          })
+        const trainerCurrency = user.currentTrainer.currency += 100;
+        const url = 'http://127.0.0.1:8000/api/PokemonTrainer/';
+        const trainerId = user.currentTrainer.id;
+        fetch(url + trainerId + '/', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ great_ball: trainerGreatBall, exp: trainerExp, currency: trainerCurrency })
+        })
 
         document.getElementById(
           "xpz"
@@ -114,19 +112,19 @@ console.log(user.capturedPokemon)
       if (user.currentTrainer.ultra_ball < 1) {
         alert("You ran out of ultra balls!");
       } else {
-        pokemonCaught()
+        pokemonCaught();
         const trainerUltraBall = user.currentTrainer.ultra_ball -= 1;
         const trainerExp = user.currentTrainer.exp += 10;
-        const trainerCurrency = user.currentTrainer.currency += 100
-          const url = 'http://127.0.0.1:8000/api/PokemonTrainer/'
-          const trainerId = user.currentTrainer.id
-          fetch(url + trainerId + '/', {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ultra_ball: trainerUltraBall, exp: trainerExp, currency: trainerCurrency})
-          })
+        const trainerCurrency = user.currentTrainer.currency += 100;
+        const url = 'http://127.0.0.1:8000/api/PokemonTrainer/';
+        const trainerId = user.currentTrainer.id;
+        fetch(url + trainerId + '/', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ ultra_ball: trainerUltraBall, exp: trainerExp, currency: trainerCurrency })
+        })
 
         document.getElementById(
           "xpz"
@@ -144,19 +142,19 @@ console.log(user.capturedPokemon)
       if (user.currentTrainer.master_ball < 1) {
         alert("You ran out of master balls!");
       } else {
-        pokemonCaught()
+        pokemonCaught();
         const trainerMasterBall = user.currentTrainer.master_ball -= 1;
         const trainerExp = user.currentTrainer.exp += 10;
-        const trainerCurrency = user.currentTrainer.currency += 100
-          const url = 'http://127.0.0.1:8000/api/PokemonTrainer/'
-          const trainerId = user.currentTrainer.id
-          fetch(url + trainerId + '/', {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({master_ball: trainerMasterBall, exp: trainerExp, currency: trainerCurrency})
-          })
+        const trainerCurrency = user.currentTrainer.currency += 100;
+        const url = 'http://127.0.0.1:8000/api/PokemonTrainer/';
+        const trainerId = user.currentTrainer.id;
+        fetch(url + trainerId + '/', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ master_ball: trainerMasterBall, exp: trainerExp, currency: trainerCurrency })
+        })
 
         document.getElementById(
           "xpz"
@@ -175,11 +173,10 @@ console.log(user.capturedPokemon)
     document.getElementById("catchThatPokemonButton").disabled = user.disabled;
   };
 
-  console.log(user.ownedPokemon)
 
   return (
     <React.Fragment>
-      <Alert id="alertWindow" style={{ color: "rgb(255, 204, 1)", width: '28rem'}} show={show} variant="light" onClose={() => setShow(false)} dismissible>
+      <Alert id="alertWindow" style={{ color: "rgb(255, 204, 1)", width: '28rem' }} show={show} variant="light" onClose={() => setShow(false)} dismissible>
         <Alert.Heading>You Caught The Pokémon!!</Alert.Heading>
       </Alert>
       <div id="encounterButtonSpot">

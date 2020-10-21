@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../Context/Context";
 import { Card, Modal, Button } from "react-bootstrap";
 import "./PokedexView.css";
-import pokedex from '../../img/pokedexlarge.png'
-import pokeball from '../../img/pokeball.png'
+import pokedex from '../../img/pokedexlarge.png';
+import pokeball from '../../img/pokeball.png';
 
 function PokedexView() {
     const user = useContext(UserContext);
@@ -33,9 +33,9 @@ function PokedexView() {
         })
         .then((res) => res.json())
         .then((response) => {
-            user.setCapturedPokemon(response)
+            user.setCapturedPokemon(response);
         })
-    }, [user])
+    }, [user]);
 
 
     useEffect(() => {

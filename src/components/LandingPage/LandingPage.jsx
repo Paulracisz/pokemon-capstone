@@ -5,8 +5,8 @@ import './LandingPage.css';
 import { useHistory } from 'react-router-dom';
 
 function LandingPage(props) {
-    const history = useHistory()
-    let { username, password } = props.pokemonTrainer
+    const history = useHistory();
+    let { username, password } = props.pokemonTrainer;
 
     const handleChange = e => {
         let { name, value } = e.target;
@@ -29,12 +29,11 @@ function LandingPage(props) {
             .then(res => res.json())
             .then(json => {
                 localStorage.setItem('token', json.token);
-                props.setToken(json.token)
+                props.setToken(json.token);
                 props.setPokemonTrainer(prevstate => ({
                     ...prevstate,
                     ...json
                 }))
-                console.log(json)
             })
             .catch(error => console.log(error))
         history.push('/encounter/')

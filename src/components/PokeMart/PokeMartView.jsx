@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from "../Context/Context";
 import './PokeMartView.css';
-import pokemartbackground from '../../img/pokemartbackgroundv3.jpg'
-import { Card, ListGroupItem } from 'react-bootstrap'
-import greatBall from "../../img/greatball.png"
-import pokeBall from "../../img/pokeballsprite.png"
-import ultraBall from "../../img/ultraball.png"
-import masterBall from "../../img/masterballsprite.png"
+import pokemartbackground from '../../img/pokemartbackgroundv3.jpg';
+import { Card, ListGroupItem } from 'react-bootstrap';
+import greatBall from "../../img/greatball.png";
+import pokeBall from "../../img/pokeballsprite.png";
+import ultraBall from "../../img/ultraball.png";
+import masterBall from "../../img/masterballsprite.png";
 import { Alert } from "react-bootstrap";
-import Meowth from "../../img/meowth.png"
+import Meowth from "../../img/meowth.png";
 
 
 
@@ -24,9 +24,9 @@ function PokeMartView() {
         masterball: 0
     }
 
-    const [poke_ball, setPokeball] = useState(initalState)
+    const [poke_ball, setPokeball] = useState(initalState);
     const handleChange = (e) => {
-        let { name, value } = e.target
+        let { name, value } = e.target;
         
         setPokeball(prevState => ({
             ...prevState,
@@ -39,15 +39,15 @@ function PokeMartView() {
 
     const handleSubmit = (e, value) => {
         if (pokeTotal > user.currentTrainer.currency) {
-            window.alert("You do not have enough money.")
+            window.alert("You do not have enough money.");
         } else {
-            let finalTotal = user.currentTrainer.currency - pokeTotal
-            let pokeBallTotal = user.currentTrainer.poke_ball + poke_ball.pokeball
-            let greatBallTotal = user.currentTrainer.great_ball + poke_ball.greatball
-            let ultraBallTotal = user.currentTrainer.ultra_ball + poke_ball.ultraball
-            let masterBallTotal = user.currentTrainer.master_ball + poke_ball.masterball
+            let finalTotal = user.currentTrainer.currency - pokeTotal;
+            let pokeBallTotal = user.currentTrainer.poke_ball + poke_ball.pokeball;
+            let greatBallTotal = user.currentTrainer.great_ball + poke_ball.greatball;
+            let ultraBallTotal = user.currentTrainer.ultra_ball + poke_ball.ultraball;
+            let masterBallTotal = user.currentTrainer.master_ball + poke_ball.masterball;
             // setting the id of the current user so we can use it in reference to our endpoint
-            let currentTrainer = user.currentTrainer.id
+            let currentTrainer = user.currentTrainer.id;
             fetch(url + currentTrainer + "/", {
                 method: "PATCH",
                 headers: {
@@ -55,11 +55,12 @@ function PokeMartView() {
                 },
                 body: JSON.stringify({ currency: finalTotal, poke_ball: pokeBallTotal, great_ball: greatBallTotal, ultra_ball: ultraBallTotal, master_ball: masterBallTotal})
             })
-            setShow(true)
+            setShow(true);
         }
     }
-    const pokeTotal = poke_ball.pokeball * 50 + poke_ball.greatball * 100 + poke_ball.ultraball * 300 + poke_ball.masterball * 800
-    console.log(pokeTotal)
+    const pokeTotal = poke_ball.pokeball * 50 + poke_ball.greatball * 100 + poke_ball.ultraball * 300 + poke_ball.masterball * 800;
+
+
     return (
         <div className='pokemart-view'>
             <div id = "moneyzDisplay">Moneyz: {user.currentTrainer.currency} </div>
