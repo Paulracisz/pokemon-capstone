@@ -4,7 +4,48 @@
 .pokedex-view {
   text-align: center;
   font-family: "Pokemon";
-  color: rgb(228, 228, 6);
+  color: rgb(255, 204, 1);
   text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
     -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
+}
+
+#pokeList {
+  top: 34%;
+  background-color: white;
+  left: 32.5%;
+  width: 270px;
+  height: 50%;
+  border-radius: 5%;
+  border: transparent;
+  position: absolute;
+  overflow-y: scroll;
+}
+
+#pokedexMain {
+  width: 100%;
+  height: 90vh;
+  display: block;
+  margin: 0 auto;
+}
+
+#cardImageHolder {
+  position: block;
+  z-index: 5;
+  height: 90vh;
+  width: 80%;
+  left: 25%;
+  margin: 0 auto;
+}
+
+.pokedexModal {
+  text-align: center;
+  font-family: "Pokemon";
+  color: rgb(255, 204, 1);
+  text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
+    -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
+}
+
+#trainerInfo {
+  position: absolute;
+  font-size: 22px;
 }
