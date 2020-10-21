@@ -22,7 +22,7 @@ body {
   color: rgb(255, 204, 1);
   text-shadow: 3px 3px 0 #0261c6, -1px -1px 0 #0261c6, 1px -1px 0 #0261c6,
     -1px 1px 0 #0261c6, 1px 1px 0 #0261c6;
-  background-size: contain;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
