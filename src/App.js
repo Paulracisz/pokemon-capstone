@@ -15,7 +15,7 @@ import PokedexView from './components/Pokedex';
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '')
   const [pokemonTrainer, setPokemonTrainer] = useState({ username: '', password: '' });
-  const [signupTrainer, setSignupTrainer] = useState({ username: '', password: '', displayname: '', bio: '' });
+  const [signupTrainer, setSignupTrainer] = useState({ username: '', password: '', email_address: '', personal_website: '', displayname: '', bio: '' });
   return (
     <Router>
       <Switch>

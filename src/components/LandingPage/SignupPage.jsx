@@ -75,7 +75,7 @@ function SignupPage(props) {
                             </Form.Group>
                             <Form.Group controlId="formEmailAddress">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control type="text" name="emailAddress" value={email_address} onChange={handleSignupChange} placeholder="Optional Enter Email" />
+                                <Form.Control type="text" name="email_address" value={email_address} onChange={handleSignupChange} placeholder="Optional Enter Email" />
                             </Form.Group>
                             <Form.Group controlId="formDisplayName">
                                 <Form.Label>Display Name</Form.Label>
@@ -83,7 +83,7 @@ function SignupPage(props) {
                             </Form.Group>
                             <Form.Group controlId="formPersonalWebsite">
                                 <Form.Label>Personal Website</Form.Label>
-                                <Form.Control type="text" name="personalWebsite" value={personal_website} onChange={handleSignupChange} placeholder="Optional Enter Personal Website" />
+                                <Form.Control type="text" name="personal_website" value={personal_website} onChange={handleSignupChange} placeholder="Optional Enter Personal Website" />
                             </Form.Group>
                             <Form.Group controlId="formBasicBio">
                                 <Form.Label>Bio</Form.Label>

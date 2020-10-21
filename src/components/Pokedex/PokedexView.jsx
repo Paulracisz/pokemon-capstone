@@ -9,7 +9,7 @@ function PokedexView() {
     const user = useContext(UserContext);
     const handleClose = () => user.setShow(false);
     const handleShow = () => user.setShow(true);
-
+    console.log(user.currentTrainer)
     useEffect(() => {
         const url = "http://127.0.0.1:8000/current_trainer";
         fetch(url, {
@@ -21,7 +21,7 @@ function PokedexView() {
             .then((response) => {
                 user.setCurrentTrainer(response);
             });
-    }, [user]);
+    }, []);
 
 
     useEffect(() => {
@@ -35,7 +35,7 @@ function PokedexView() {
         .then((response) => {
             user.setCapturedPokemon(response);
         })
-    }, [user]);
+    }, []);
 
 
     useEffect(() => {
@@ -52,7 +52,7 @@ function PokedexView() {
             user.setPokemonData(newArr);
         }
         fetchData();
-    }, [user]);
+    }, []);
 
 
     const handlePokedexData = (name) => {
@@ -82,6 +82,7 @@ function PokedexView() {
                 <h1>Trainer Info:</h1>
                 <ul style={{ textAlign: 'left' }}>
                     <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Trainer: {user.currentTrainer.username}</li>
+                    <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Display Name: {user.currentTrainer.displayname}</li>
                     <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Email: {user.currentTrainer.email_address}</li>
                     <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Personal Website: {user.currentTrainer.personal_website}</li>
                     <li><img style={{width: '30px'}}src={pokeball} alt="pokeball"/> Bio: {user.currentTrainer.bio}</li>
