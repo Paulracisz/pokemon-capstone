@@ -137,8 +137,6 @@ function PokeMartView() {
                 </Card>
             </div>
             <br/>
-            <h2>You have {user.currentTrainer.currency} Moneyz</h2>
-            <br/>
             <h2>Your Total Is: {pokeTotal}</h2>
             <button onClick={() => handleSubmit()} type="button" id="checkout" class="btn btn-success">Check Out</button>
         </div>
